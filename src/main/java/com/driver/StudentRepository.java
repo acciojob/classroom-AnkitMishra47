@@ -26,7 +26,10 @@ public class StudentRepository {
         Teacher teacher = teachers.get(teacherName);
 
         List<Student> students  = studentAndTeachers.get(teacher) == null ? new ArrayList<>() : studentAndTeachers.get(teacher);
-        students.add(student);
+
+        if (!students.contains(student)){
+            students.add(student);
+        }
         studentAndTeachers.put(teacher ,  students);
     }
 
@@ -55,22 +58,22 @@ public class StudentRepository {
     }
 
     public void deleteTeachers(){
-//        List<Teacher> teachers = new ArrayList<>(studentAndTeachers.keySet());
-//
-//        for (Teacher teacher : teachers){
-//            deleteTeacher(teacher.getName());
-//        }
+        List<Teacher> teachers = new ArrayList<>(studentAndTeachers.keySet());
+
+        for (Teacher teacher : teachers){
+            deleteTeacher(teacher.getName());
+        }
 
         studentAndTeachers.clear();
     }
 
     public void deleteTeacher(String teacherName){
         Teacher teacher = getTeacher(teacherName);
-//        List<Student> students = studentAndTeachers.get(teacher);
-//
-//        for (Student student : students){
-//            students.remove(student);
-//        }
+        List<Student> students = studentAndTeachers.get(teacher);
+
+        for (Student student : students){
+            students.remove(student);
+        }
         studentAndTeachers.remove(teacher);
     }
 
