@@ -25,7 +25,7 @@ public class Teacher {
     }
 
     public void setNumberOfStudents(int numberOfStudents) {
-        this.numberOfStudents = numberOfSgtudents;
+        this.numberOfStudents = numberOfStudents;
     }
 
     public int getAge() {
